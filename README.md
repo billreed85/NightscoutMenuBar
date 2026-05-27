@@ -16,6 +16,7 @@ A lightweight macOS menu bar application for displaying [Nightscout](https://git
 * Move Nightscout Menu Bar.app to your Applications folder.
 * Launch the application and enter your Nightscout URL when prompted.
 * (Optional) Launch the application on startup by adding it to System Preferences > General > Login Items & Extensions.
+* Note: macOS will block the app on first open because it is not notarized. To bypass this, right-click (or Control-click) the app and choose Open from the menu, then click Open in the dialog that appears. You only need to do this once.
 
 ## Notes
 * This is generally unsupported. I am putting the update in a repo to help others who might want to use this solution, but it isn't in active development or support.

@@ -8,17 +8,23 @@ A lightweight macOS menu bar application for displaying [Nightscout](https://git
 - [x] Displays recent blood glucose history on click
 - [x] Automatically pulls units (mg/dL or mmol/L) from Nightscout
 - [x] Options to configure glucose display (optionally include delta and time)
+- [x] Add color-coded menu bar text (red/orange/green/yellow) based on BG value
 - [x] Very low memory usage (~12 MB)
 
 ## Installation
 * Download the latest version from the [releases page](https://github.com/mpangburn/Nightscout-Menu-Bar/releases) extract the .zip file.
 * Move Nightscout Menu Bar.app to your Applications folder.
 * Launch the application and enter your Nightscout URL when prompted.
-* (Optional) Launch the application on startup by adding it to System Preferences > Users and Groups > Login Items.
+* (Optional) Launch the application on startup by adding it to System Preferences > General > Login Items & Extensions.
 
 ## Notes
-* [Submit an issue](https://github.com/mpangburn/RayTracer/issues) to report a bug, suggest a new feature, or provide feedback.
-* When reporting a bug, go to [yourNightscoutURL]/api/v1/entries.json and copy/paste the data you see into your issue submission.
+* This is generally unsupported. I am putting the update in a repo to help others who might want to use this solution, but it isn't in active development or support.
+* Color Coding as follows: 
+  * Below 55: Red
+  * 55-69: Orange
+  * 70-179: Green
+  * 180-249: Yellow
+  * 250 and above: Red
 
 ## Credits
-Nightscout Menu Bar was influenced by mddub's [similar application](https://github.com/mddub/nightscout-osx-menubar).
+This is an updated copy of the excellent NightscoutMenuBar by mpangburn (https://github.com/mpangburn/NightscoutMenuBar).

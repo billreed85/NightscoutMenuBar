@@ -2,7 +2,7 @@
 
 A lightweight macOS menu bar application for displaying [Nightscout](https://github.com/nightscout/cgm-remote-monitor#nightscout-web-monitor-aka-cgm-remote-monitor) blood glucose data.
 
-![Open Menu Bar](https://github.com/mpangburn/Nightscout-Menu-Bar/blob/master/Screenshots/open%20menu%20bar.png?raw=true)
+![Open Menu Bar](https://github.com/billreed85/NightscoutMenuBar/blob/main/Screenshots/menu-bar.png)
 
 - [x] Displays real-time Nightscout blood glucose data in the menu bar
 - [x] Displays recent blood glucose history on click

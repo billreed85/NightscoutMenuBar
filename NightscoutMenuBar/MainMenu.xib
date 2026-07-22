@@ -24,6 +24,12 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="swk-zQ-T8x"/>
+                <menuItem title="Refresh Now" id="rFN-x1-00A">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="refreshNowClicked:" target="ZZB-iI-07U" id="rFN-x1-00B"/>
+                    </connections>
+                </menuItem>
                 <menuItem title="Preferences" id="ewk-bB-dxK">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Preferences" id="wmF-F4-yrW">

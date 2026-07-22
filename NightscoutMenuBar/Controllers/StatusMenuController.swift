@@ -60,7 +60,11 @@ class StatusMenuController: NSObject {
 
     private func setupRefreshTimer() {
         Timer.scheduledTimer(withTimeInterval: .minutes(1), repeats: true) { [weak self] _ in
-            self?.fetchEntries()
+            guard let self else { return }
+            if Date().timeIntervalSince(self.lastUpdated) > .minutes(10) {
+                URLCache.shared.removeAllCachedResponses()
+            }
+            self.fetchEntries()
         }
     }
 
@@ -121,15 +125,18 @@ class StatusMenuController: NSObject {
         components.queryItems = [URLQueryItem(name: "count", value: "10")]
         guard let url = components.url else { return }
 
-        URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+        let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData)
+        URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
             guard let self else { return }
 
-            if let error = error as? URLError {
-                if error.code != .notConnectedToInternet && error.code != .networkConnectionLost {
-                    DispatchQueue.main.async {
-                        self.showError(NSLocalizedString("Network Error", comment: "Network error title"),
-                                       detail: error.localizedDescription)
-                    }
+            if let error = error {
+                if let urlError = error as? URLError,
+                   urlError.code == .notConnectedToInternet || urlError.code == .networkConnectionLost {
+                    return
+                }
+                DispatchQueue.main.async {
+                    self.showError(NSLocalizedString("Network Error", comment: "Network error title"),
+                                   detail: error.localizedDescription)
                 }
                 return
             }
@@ -230,6 +237,11 @@ class StatusMenuController: NSObject {
         sender.isOn.toggle()
         UserDefaults.standard.showBGTimeMenuItemState = sender.state
         updateUI()
+    }
+
+    @IBAction private func refreshNowClicked(_ sender: NSMenuItem) {
+        URLCache.shared.removeAllCachedResponses()
+        fetchEntries()
     }
 
     @IBAction private func setNightscoutURLClicked(_ sender: NSMenuItem) {
